@@ -26,7 +26,8 @@ class DataLoader(object):
         """
 
         # TODO: Use np.random.shuffle() to shuffles the indices in self.indices
-        pass
+        # old: pass
+        np.random.shuffle(self.indices)
 
     def get_batch(self, mode='train'):
         """Returns self.X and self.y divided into different batches of size
@@ -49,7 +50,8 @@ class DataLoader(object):
         # TODO: If mode is set to `train`, shuffle the indices first using
         # self.shuffle().
         if mode == 'train':
-            pass
+            # old: pass
+            self.shuffle()
         elif mode == 'test':
             self.indices = np.array([i for i in range(self.X.shape[0])])
 
@@ -67,7 +69,8 @@ class DataLoader(object):
             # last element in the list. Edit the statement inside the else
             # block.
             else:
-                indices = None
+                # old: indices = None
+                indices = self.indices[i:i + indices_left]
 
             X_batch.append(self.X[indices])
             y_batch.append(self.y[indices])
